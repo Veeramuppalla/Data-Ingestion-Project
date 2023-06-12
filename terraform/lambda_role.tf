@@ -75,4 +75,4 @@ resource "aws_iam_role_policy" "cloud_watch_role_policy_tf" {
 resource "aws_iam_role_policy_attachment" "aws_s3_policy_attachment_tf" {
   role       = aws_iam_role.iam_role_lambda_tf.name
   policy_arn = aws_iam_policy.aws_s3_policy_tf.arn
-}
+} 
