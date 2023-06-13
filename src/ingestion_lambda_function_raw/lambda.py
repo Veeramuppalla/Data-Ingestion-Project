@@ -40,10 +40,10 @@ def sending_email(subject,message):
 ######################## Code for Lambda #######################
 
 def lambda_handler(event, context):
-    dataset='source_system/config.json'
+    dataset=event['dataset']
       
     # Fecthing Date from the config.json
-    response = s3_client.get_object(Bucket=codelambdabucket, Key=dataset)
+    response = s3_client.get_object(Bucket=codelambdabucket, Key=f"{dataset}/config/config.json")
     config_data = response['Body'].read().decode('utf-8')
     config = json.loads(config_data)
     lambda_config = config['lambda_config'][0]
@@ -68,7 +68,7 @@ def lambda_handler(event, context):
         filename_parts = a.split(".")
         #print(filename_parts)
     
-        new_name = f"{source_folder}/{filename_parts[0]}/year={year}/month={month}/day={day}/{filename_parts[0]}_{current_date}.{filename_parts[1]}"
+        new_name = f"{source_folder}/{filename_parts[0]}/year={year}/month={month}/day={day}/{filename_parts[0]}_{year}_{month}_{day}.{filename_parts[1]}"
         try:
             copy_source = {
                     'Bucket': s3_bucket_name,

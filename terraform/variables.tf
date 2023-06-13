@@ -3,3 +3,7 @@ variable "aws_region" {
     type = string    
     default = "us-east-2"
 }
+
+variable "email_id"{
+    type = string
+}

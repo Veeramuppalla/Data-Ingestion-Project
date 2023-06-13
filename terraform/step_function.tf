@@ -57,6 +57,47 @@ EOF
 }
 
 
+
+
+data "aws_iam_policy_document" "event_bridge_policy" {
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "states:StartExecution"
+    ]
+
+    resources = [
+      "arn:aws:states:us-east-2:862370907407:stateMachine:yash-state-machine-tf"
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "assume_role_eb" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+resource "aws_iam_role" "eb_role"{
+  name ="eb_role"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_eb.json
+}
+
+resource "aws_iam_role_policy" "eb_role_policy" {
+  name   = "eb_role_policy"
+  policy = data.aws_iam_policy_document.event_bridge_policy.json
+  role   = aws_iam_role.eb_role.name
+}
+
 resource "aws_iam_role_policy" "lambda-execution" {
   name = "lambda-execution"
   role = aws_iam_role.state_machine_role.id

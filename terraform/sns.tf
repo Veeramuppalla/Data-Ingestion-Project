@@ -25,5 +25,6 @@ resource "aws_iam_role_policy" "sns_topic_policy_tf" {
 resource "aws_sns_topic_subscription" "user_updates_sns_target" {
   topic_arn = aws_sns_topic.creating_topic_tf.arn
   protocol  = "email-json"
-  endpoint  = "yashjkz855@gmail.com"
+  #endpoint  = "yashjkz855@gmail.com"
+  endpoint = var.email_id
 }
