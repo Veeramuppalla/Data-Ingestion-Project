@@ -1,0 +1,17 @@
+{
+    "dataset": "movie_lens",
+    "type": "file_ingestion",
+    "schedule": "cron(0 0 * * ? *)",
+    "pipeline": [
+        {
+            "data_asset": "genome_scores",
+            "raw": {
+                "source_bucket": "yash-movielens-source-data",
+                "source_folder": "movielens",
+                "target_bucket": "yash-movielens-raw-data",
+                "partition": "HOUR",
+                "file_pattern": "genome_scores"
+            }
+        }   
+    ]
+}

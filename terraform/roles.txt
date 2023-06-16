@@ -1,0 +1,32 @@
+
+s3
+lambda
+moving data from one bucket to another
+sending email
+
+Resources:
+s3
+lambda
+sns
+
+Resource communication:
+lambda should communicate with s3
+lambda should communicate with sns
+
+iam roles:
+iam role for lambda
+iam role for s3 
+
+iam policy:
+iam policy for s3
+iam policy for sns
+
+
+iam policies with role:
+
+s3 policy --> lambda role
+sns policy --> lambda role
+
+resource with roles:
+lambda role --> lambda resource
+s3 role --> s3 resource

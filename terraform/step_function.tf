@@ -14,7 +14,9 @@ resource "aws_sfn_state_machine" "yash-state-machine-tf" {
       "OutputPath": "$.Payload",
       "Parameters": {
         "Payload.$": "$",
-        "FunctionName": "arn:aws:lambda:us-east-2:862370907407:function:ingest-source-raw-data-tf:$LATEST"
+        "FunctionName": "arn:aws:lambda:us-east-2:${var.account_id}:function:ingest-source-raw-data-tf:$LATEST"
+        
+        
       },
       "Retry": [
         {
@@ -69,7 +71,7 @@ data "aws_iam_policy_document" "event_bridge_policy" {
     ]
 
     resources = [
-      "arn:aws:states:us-east-2:862370907407:stateMachine:yash-state-machine-tf"
+      "arn:aws:states:us-east-2:${var.account_id}:stateMachine:yash-state-machine-tf"
     ]
   }
 }

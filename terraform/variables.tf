@@ -7,3 +7,8 @@ variable "aws_region" {
 variable "email_id"{
     type = string
 }
+
+variable "account_id"{
+    type = number
+    default = "862370907407"
+}

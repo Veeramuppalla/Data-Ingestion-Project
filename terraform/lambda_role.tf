@@ -27,8 +27,8 @@ data "aws_iam_policy_document" "cloud_watch_policy_tf" {
     ]
 
     resources = [
-      "arn:aws:logs:us-east-2:862370907407:*",
-      "arn:aws:logs:us-east-2:862370907407:log-group:/aws/lambda/ingest-source-raw-data-tf:*"
+      "arn:aws:logs:us-east-2:${var.account_id}:*",
+      "arn:aws:logs:us-east-2:${var.account_id}:log-group:/aws/lambda/ingest-source-raw-data-tf:*"
     ]
   }
 }
