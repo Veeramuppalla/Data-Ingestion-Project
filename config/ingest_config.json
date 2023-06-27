@@ -12,6 +12,56 @@
                 "partition": "HOUR",
                 "file_pattern": "genome_scores"
             }
-        }   
+        } ,
+        {
+            "data_asset": "genome_tags",
+            "raw": {
+                "source_bucket": "yash-movielens-source-data",
+                "source_folder": "movielens",
+                "target_bucket": "yash-movielens-raw-data",
+                "partition": "YEAR",
+                "file_pattern": "genome_tags"
+            }
+        }, 
+        {
+            "data_asset": "links",
+            "raw": {
+                "source_bucket": "yash-movielens-source-data",
+                "source_folder": "movielens",
+                "target_bucket": "yash-movielens-raw-data",
+                "partition": "DAY",
+                "file_pattern": "link"
+            }
+        },
+        {
+            "data_asset": "movie",
+            "raw": {
+                "source_bucket": "yash-movielens-source-data",
+                "source_folder": "movielens",
+                "target_bucket": "yash-movielens-raw-data",
+                "partition": "MONTH",
+                "file_pattern": "movie"
+            }
+        },
+        {
+            "data_asset": "rating",
+            "raw": {
+                "source_bucket": "yash-movielens-source-data",
+                "source_folder": "movielens",
+                "target_bucket": "yash-movielens-raw-data-3",
+                "partition": "HOUR",
+                "file_pattern": "rating"
+            }
+        },
+        {
+            "data_asset": "tags",
+            "raw": {
+                "source_bucket": "yash-movielens-source-data",
+                "source_folder": "movielens",
+                "target_bucket": "yash-movielens-raw-data-2",
+                "partition": "YEAR",
+                "file_pattern": "tag"
+            }
+        }
     ]
 }

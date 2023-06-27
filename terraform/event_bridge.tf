@@ -1,9 +1,12 @@
 ###  FOR CREATING EVENT BRIDGE
 
+
+
 resource "aws_cloudwatch_event_rule" "event_bridge_rule" {
   name        = "step-function-invocation-rule"
   description = "Rule to Invoke Step Function"
   schedule_expression = "rate(5 minutes)"  # Schedule to run every 30 minutes
+ 
 }
 
 resource "aws_cloudwatch_event_target" "event_bridge_target" {
